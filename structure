@@ -1,0 +1,40 @@
+# How to use popART to play around with haplotype networks
+# Create a .nexus file from Geneious (or whatever genetic software you are using)
+
+# .nexus file should display information as below..
+#NEXUS
+begin taxa;
+	dimensions ntax=9;
+	taxlabels
+  sample_no_1 with some geneious text data
+  sample_no_2 with some geneious text data
+  ;
+  end;
+  
+  begin characters;
+	dimensions nchar=668;
+	format datatype=dna missing=? gap=-;
+	matrix
+	sample_no_1
+  CGGCACCCTATACTTGATCTTTGGTGCTTGAGCAGGGATAGTTGGTACTGGCCTTAGTCTG
+  sample_no_2
+  CGGCACCCTATACTTGATCTTTGGTGCTTGAGCAGGGATAGTTGGTACTGGCCTTAGTCTG
+  ;
+  end;
+  
+# the above file will throw errors in popART and will not load so you need to add trait data like below
+BEGIN TRAITS;
+Dimensions NTRAITS=4;
+Format labels=yes missing=? separator=Comma;
+TraitLabels location 1 location 2 location3;
+Matrix
+sample_no_1 1,0,0
+sample_no_2 0,0,1
+;
+end;
+
+# open popART, click File Open and choose edited nexus file, this will give you traits and alignment
+# Click Network, then Median Joining Network to create a Haplotype network
+# Click Edit to add or remove labels, change trait colours etc
+# To save, click File, Save as to save nexus file
+# to export images click file then export to pdf (this is the most usable form of the graphic)
