@@ -1,10 +1,10 @@
 # How to use popART to play around with haplotype networks
 # Create a .nexus file from Geneious (or whatever genetic software you are using)
 
-# .nexus file should display information as below..
+# .nexus file should display information as below, where x is number of samples, or bases
 #NEXUS
 begin taxa;
-	dimensions ntax=9;
+	dimensions ntax=x;
 	taxlabels
   sample_no_1 with some geneious text data
   sample_no_2 with some geneious text data
@@ -12,7 +12,7 @@ begin taxa;
   end;
   
   begin characters;
-	dimensions nchar=668;
+	dimensions nchar=x;
 	format datatype=dna missing=? gap=-;
 	matrix
 	sample_no_1
@@ -24,7 +24,7 @@ begin taxa;
   
 # the above file will throw errors in popART and will not load so you need to add trait data like below
 BEGIN TRAITS;
-Dimensions NTRAITS=4;
+Dimensions NTRAITS=3;
 Format labels=yes missing=? separator=Comma;
 TraitLabels location 1 location 2 location3;
 Matrix
